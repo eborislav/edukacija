@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://bmp.rs/control-panel/01_pocetna.php">Edukacija</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/postojeci_zadaci">Postojeći zadaci</a></li>
+                      <li><a href="/upisi_zadatak">Upiši zadatak</a></li>
+                    <li><a href="/izmeni_zadatak">Izmeni zadatak</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $IDUSER; ?></a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Odjava</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Edukacija</div>
+
+                    {% if app.user != null %}
+                        <table class="table">
+                            <tr>
+                                <th>r.b. zadatka</th>
+                                <th>Naziv zadatka</th>
+                            </tr>
+
+                            {% for post in posts %}
+                                <tr>
+                                    <td>{{ post.id }} </td><td>{{ post.title }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+
+
+                </div>
+
+                {% if app.user == null %}
+                    <a href="/login" class="btn btn-info">Da bi pristupili edukaciji mora te se prijaviti 😜😜 >></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
