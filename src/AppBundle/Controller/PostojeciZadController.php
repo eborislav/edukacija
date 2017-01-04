@@ -26,6 +26,7 @@ class PostojeciZadController extends Controller
        // $posts = $this->getDoctrine()->getRepository('AppBundle:RedditPost')-> findOneBy([ 'id' => 1]);
         // $posts = $this->getDoctrine()->getRepository('AppBundle:RedditPost')-> findOneBy([ 'id' => [1.2] ]);
         dump ($posts);
+
         return $this->render('default/index.html.twig', ['posts' => $posts
 
         ]);
